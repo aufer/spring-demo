@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{head :: head}">
+</head>
+<body>
+<div th:replace="~{navigation :: navbar}"></div>
+
+<div class="page">
+    <section id="articles">
+        <article class="article card">
+            <h2 class="article__headline">
+                    <span th:text="${article.headline}"></span>
+                <a href="/web/articles/id" th:href="@{/web/articles/{id}/edit(id=${article.id})}">(EDIT)
+                </a>
+            </h2>
+            <div class="article__meta">
+                <span class="article__author" th:text="${article.author}"></span>
+                on
+                <span class="article__created" th:text="${article.createdAt}"></span>
+            </div>
+            <hr>
+            <p class="article__content" th:text="${article.content}"></p>
+        </article>
+    </section>
+</div>
+</body>
+</html>

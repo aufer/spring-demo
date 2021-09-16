@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{head :: head}">
+</head>
+<body>
+<div th:replace="~{navigation :: navbar}"></div>
+
+<div class="page">
+    <h1 class="page-headline">Article</h1>
+    <section id="add-article">
+        <form th:action="@{/web/article/save}" th:object="${article}" method="post" class="card">
+            <div class="form-field">
+                <label for="id">ID</label> <input th:field="${article.id}" readonly id="id">
+            </div>
+            <div class="form-field">
+                <label for="headline">Headline</label> <input th:field="${article.headline}" id="headline">
+            </div>
+            <div class="form-field">
+                <label for="author">Author</label> <input th:field="${article.author}" id="author">
+            </div>
+            <div class="form-field">
+                <label for="content">Content</label> <textarea th:field="${article.content}" id="content"></textarea>
+            </div>
+            <input type="submit" value="Speichern">
+        </form>
+    </section>
+</div>
+</body>
+</html>

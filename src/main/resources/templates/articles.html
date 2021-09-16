@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{head :: head}">
+</head>
+<body>
+<div th:replace="~{navigation :: navbar}"></div>
+
+<div class="page">
+    <h1 class="page-headline">Hallo</h1>
+    <section id="articles">
+        <article class="article card" th:each="article: ${articles}">
+            <h2 class="article__headline">
+                <a href="/web/articles/id" th:href="@{/web/articles/{id}(id=${article.id})}">
+                    <span th:text="${article.headline}"></span>
+                </a>
+            </h2>
+            <div class="article__meta">
+                <span class="article__author" th:text="${article.author}"></span> on <span class="article__created"
+                                                                                           th:text="${article.createdAt}"></span>
+            </div>
+            <hr>
+            <p class="article__content" th:text="${article.getTeaser()}"></p>
+        </article>
+    </section>
+</div>
+</body>
+</html>

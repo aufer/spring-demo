@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{head :: head}">
+</head>
+<body>
+<div th:replace="~{navigation :: navbar}"></div>
+
+<div class="page">
+  <h1 class="page-headline">Hallo</h1>
+  <section id="add-article">
+    <form th:action="@{/web/login}" method="post" class="card">
+      <div class="form-field">
+        <label for="username">Username</label> <input type="text" id="username" name="username">
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label> <input type="password" id="password" name="password">
+      </div>
+
+      <input type="submit" value="Speichern">
+    </form>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div class="navigation-container" th:fragment="navbar"
+     th:with="loggedIn=${auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals('anonymousUser')}">
+    <navigation class="navigation-bar">
+        <a href="/web/articles.html" th:href="@{/web/articles}" class="navigation-link">Blog</a>
+        <a href="/web/articles/add.html" th:href="@{/web/articles/add}" class="navigation-link"
+           th:if="${loggedIn}">Add</a>
+        <a href="/web/about.html" th:href="@{/web/articles}" class="navigation-link">About</a>
+        <a href="/web/imprint.html" th:href="@{/web/articles}" class="navigation-link">Imprint</a>
+    </navigation>
+    <div class="profile">
+        <div th:if="${loggedIn}">
+            <img src="" class="profile__image">
+            <div class="profile__details">
+                <p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </div>
+        <div th:unless="${loggedIn}">
+            <a href="/web/login" th:href="@{/web/login}">Login</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
