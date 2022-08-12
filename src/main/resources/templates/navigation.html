@@ -5,12 +5,14 @@
 <div class="navigation-container" th:fragment="navbar"
      th:with="loggedIn=${auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals('anonymousUser')}">
     <navigation class="navigation-bar">
+        <a href="/web/members.html" th:href="@{/web/members}" class="navigation-link">Members</a>
         <a href="/web/articles.html" th:href="@{/web/articles}" class="navigation-link">Blog</a>
         <a href="/web/articles/add.html" th:href="@{/web/articles/add}" class="navigation-link"
-           th:if="${loggedIn}">Add</a>
+        th:if="${loggedIn}">Add</a>
         <a href="/web/about.html" th:href="@{/web/articles}" class="navigation-link">About</a>
         <a href="/web/imprint.html" th:href="@{/web/articles}" class="navigation-link">Imprint</a>
     </navigation>
+
     <div class="profile">
         <div th:if="${loggedIn}">
             <img src="" class="profile__image">

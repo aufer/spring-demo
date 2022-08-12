@@ -1,5 +1,7 @@
 package de.ausgeufert.demo;
 
+import de.ausgeufert.demo.members.Member;
+import de.ausgeufert.demo.members.MembersRepository;
 import de.ausgeufert.demo.model.Article;
 import de.ausgeufert.demo.api.ArticleRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -29,6 +31,30 @@ public class LoadDatabase {
                     "Java is chatty",
                     "No discussion wanted. But you cannot avoid it anyway... so... ok.?",
                     "Andre Ufer", now));
+        };
+    }
+
+    @Bean
+    CommandLineRunner initMembers(MembersRepository repo) {
+        return args -> {
+            repo.save(new Member(
+                            new Date(2017 - 1900, 0, 1),
+                            60,
+                            "DE1100110010001010001",
+                            "SOMEBIC1A",
+                            "",
+                            true,
+                            "Andre",
+                            "Ufer",
+                            "Street Name",
+                            "1",
+                            "66688",
+                            "Villagename",
+                            "-",
+                            "0124-99119999",
+                            "andre.ufer@ma.il"
+                    )
+            );
         };
     }
 }

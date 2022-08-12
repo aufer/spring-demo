@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{head :: head}">
+</head>
+<body>
+<div th:replace="~{navigation :: navbar}"></div>
+
+<div class="page">
+    <section id="entity">
+        <div class="entity card">
+            <h2 class="entity__headline">
+                <span th:text="${entity.firstName + ', ' + entity.lastName}"></span>
+                <a href="/web/entitys/id" th:href="@{/web/members/{id}/edit(id=${entity.id})}">(EDIT)
+                </a>
+            </h2>
+            <div class="entity__meta">
+                Member since: <span class="entity__created" th:text="${entity.memberSince}"></span>
+            </div>
+            <hr>
+            <p class="entity__content" th:text="${entity.street}"></p>
+            <p class="entity__content" th:text="${entity.street}"></p>
+            <p class="entity__content" th:text="${entity.street}"></p>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/web")
+@RequestMapping("/web/articles")
 public class ArticleUiController {
 
     @Autowired
@@ -24,23 +24,18 @@ public class ArticleUiController {
     }
 
     @GetMapping("")
-    public String home(Model model) {
-        return this.articles(model);
-    }
-
-    @GetMapping("articles")
     public String articles(Model model) {
         model.addAttribute("articles", articleRepository.findAllByOrderByCreatedAtDesc());
         return "articles";
     }
 
-    @GetMapping("articles/add")
+    @GetMapping("add")
     public String addArticle(Model model) {
         model.addAttribute("article", new Article());
         return "add-article";
     }
 
-    @GetMapping("articles/{id}/edit")
+    @GetMapping("{id}/edit")
     public String updateArticle(Model model, @PathVariable Long id) {
         Optional<Article> article = this.articleRepository.findById(id);
         if (!article.isPresent()) return "404";
@@ -48,7 +43,7 @@ public class ArticleUiController {
         return "add-article";
     }
 
-    @GetMapping("articles/{id}")
+    @GetMapping("{id}")
     public String articleDetails(Model model, @PathVariable Long id) {
         Optional<Article> a = this.articleRepository.findById(id);
         if (!a.isPresent()) return "404";
@@ -56,7 +51,7 @@ public class ArticleUiController {
         return "article-details";
     }
 
-    @PostMapping("article/save")
+    @PostMapping("save")
     public String saveArticle(@ModelAttribute Article article, Model model) {
         this.articleRepository.save(article);
         model.addAttribute("articles", articleRepository.findAll());

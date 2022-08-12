@@ -42,6 +42,23 @@ h2 a {
     color: var(--color-font-main);
 }
 
+table {
+    background-color: var(--white);
+    border: 1px solid var(--color-border);
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid var(--color-border);
+    padding: 0.5rem;
+}
+
+th {
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
 .navigation-container {
     display: flex;
     justify-content: space-between;
@@ -98,15 +115,15 @@ h2 a {
     margin-top: 2rem;
 }
 
-.article__headline {
+.entity__headline {
     margin-bottom: 0.5rem;
 }
 
-.article__meta {
+.entity__meta {
     padding: 0.25rem 0.5rem;
 }
 
-.article__content {
+.entity__content {
     padding: 0.25rem 0.5rem;
 }
 
